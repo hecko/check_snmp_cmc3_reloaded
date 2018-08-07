@@ -123,7 +123,7 @@ if ($PORT_TYPE eq "CMCIII-HUM"){
 	$EXIT_STRING_FINAL = $EXIT_STRING_FINAL.$EXIT_STRING;
 	$EXIT_PERFDATA_FINAL = $EXIT_PERFDATA_FINAL.$EXIT_PERFDATA;
 
-	($EXIT_STRING, $EXIT_PERFDATA, $EXIT_CODE) = check_temp($unit_port,$PORT_NAME);
+	($EXIT_STRING, $EXIT_PERFDATA, $EXIT_CODE) = check_temp_hum($unit_port,$PORT_NAME);
         $EXIT_CODE_FINAL = check_final_exit_code($EXIT_CODE,$EXIT_CODE_FINAL);
 	$EXIT_STRING_FINAL = $EXIT_STRING_FINAL.", ".$EXIT_STRING;
 	$EXIT_PERFDATA_FINAL = $EXIT_PERFDATA_FINAL." ".$EXIT_PERFDATA;
@@ -285,7 +285,7 @@ sub check_hum {
 	my $EXIT_WORD;
 	my $UNIT="%";
 	my $PERFDATA_UNIT="%";
-	my $DESC = "Luftfeuchtigkeit";
+	my $DESC = "Air humidity";
 	my $EXIT_STRING;
 	my $EXIT_PERFDATA;	
 	my $PORT_VALUE_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".11";
@@ -319,7 +319,44 @@ sub check_temp {
 	my $EXIT_WORD;
 	my $UNIT="C";
 	my $PERFDATA_UNIT="";
-	my $DESC="Temperatur";
+	my $DESC="Temperature";
+	my $EXIT_STRING;
+	my $EXIT_PERFDATA;	
+	my $PORT_VALUE_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".2";
+	my $PORT_LOWWARN_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".6";
+	my $PORT_HIGHWARN_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".5";
+	my $PORT_LOWCRIT_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".7";
+	my $PORT_HIGHCRIT_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".4";
+
+	my $PORT_VALUE = $session->get_request(-varbindlist => [ $PORT_VALUE_OID ],);
+	$PORT_VALUE = $PORT_VALUE->{$PORT_VALUE_OID}/100;
+
+	my $PORT_LOWWARN = $session->get_request(-varbindlist => [ $PORT_LOWWARN_OID ],);
+	$PORT_LOWWARN = $PORT_LOWWARN->{$PORT_LOWWARN_OID}/100;
+
+	my $PORT_HIGHWARN = $session->get_request(-varbindlist => [ $PORT_HIGHWARN_OID ],);
+	$PORT_HIGHWARN = $PORT_HIGHWARN->{$PORT_HIGHWARN_OID}/100;
+
+	my $PORT_LOWCRIT = $session->get_request(-varbindlist => [ $PORT_LOWCRIT_OID ],);
+	$PORT_LOWCRIT = $PORT_LOWCRIT->{$PORT_LOWCRIT_OID}/100;
+
+	my $PORT_HIGHCRIT = $session->get_request(-varbindlist => [ $PORT_HIGHCRIT_OID ],);
+	$PORT_HIGHCRIT = $PORT_HIGHCRIT->{$PORT_HIGHCRIT_OID}/100;
+
+        ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
+        $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
+        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+	return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
+}
+
+sub check_temp_hum {
+	my $unit_port = $_[0];
+	my $PORT_NAME = $_[1];
+	my $EXIT_CODE;
+	my $EXIT_WORD;
+	my $UNIT="C";
+	my $PERFDATA_UNIT="";
+	my $DESC="Temperature";
 	my $EXIT_STRING;
 	my $EXIT_PERFDATA;	
 	my $PORT_VALUE_OID = "1.3.6.1.4.1.2606.7.4.2.2.1.11.".$unit_port.".2";
@@ -330,12 +367,16 @@ sub check_temp {
 
 	my $PORT_VALUE = $session->get_request(-varbindlist => [ $PORT_VALUE_OID ],);
 	$PORT_VALUE = $PORT_VALUE->{$PORT_VALUE_OID}/100;
+
 	my $PORT_LOWWARN = $session->get_request(-varbindlist => [ $PORT_LOWWARN_OID ],);
 	$PORT_LOWWARN = $PORT_LOWWARN->{$PORT_LOWWARN_OID}/100;
+
 	my $PORT_HIGHWARN = $session->get_request(-varbindlist => [ $PORT_HIGHWARN_OID ],);
 	$PORT_HIGHWARN = $PORT_HIGHWARN->{$PORT_HIGHWARN_OID}/100;
+
 	my $PORT_LOWCRIT = $session->get_request(-varbindlist => [ $PORT_LOWCRIT_OID ],);
 	$PORT_LOWCRIT = $PORT_LOWCRIT->{$PORT_LOWCRIT_OID}/100;
+
 	my $PORT_HIGHCRIT = $session->get_request(-varbindlist => [ $PORT_HIGHCRIT_OID ],);
 	$PORT_HIGHCRIT = $PORT_HIGHCRIT->{$PORT_HIGHCRIT_OID}/100;
 
@@ -898,6 +939,7 @@ sub pmm_threshold_check {
         my $PORT_LOWWARN = $_[4];
 	my $EXIT_CODE;
 	my $EXIT_WORD;
+
         if (($PORT_VALUE >= $PORT_HIGHWARN) && ($PORT_VALUE < $PORT_HIGHCRIT)) {
                 $EXIT_CODE=1;
                 $EXIT_WORD="WARNING";
