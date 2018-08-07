@@ -302,7 +302,7 @@ sub check_hum {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
 	return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 
 }
@@ -340,7 +340,7 @@ sub check_temp {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
 	return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 
@@ -377,7 +377,7 @@ sub check_temp_hum {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
 	return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 
@@ -410,7 +410,7 @@ sub check_airflow {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";0;100";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";0;100";
 	return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 
@@ -465,7 +465,7 @@ sub check_pmm_circuit1_l1_V {
 	
 	($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l1_V {
@@ -496,7 +496,7 @@ sub check_pmm_circuit2_l1_V {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l2_V {
@@ -527,7 +527,7 @@ sub check_pmm_circuit1_l2_V {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l2_V {
@@ -558,7 +558,7 @@ sub check_pmm_circuit2_l2_V {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l3_V {
@@ -589,7 +589,7 @@ sub check_pmm_circuit1_l3_V {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l3_V {
@@ -620,7 +620,7 @@ sub check_pmm_circuit2_l3_V {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l1_A {
@@ -651,7 +651,7 @@ sub check_pmm_circuit1_l1_A {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l1_A {
@@ -682,7 +682,7 @@ sub check_pmm_circuit2_l1_A {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l2_A {
@@ -713,7 +713,7 @@ sub check_pmm_circuit1_l2_A {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l2_A {
@@ -744,7 +744,7 @@ sub check_pmm_circuit2_l2_A {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l3_A {
@@ -775,7 +775,7 @@ sub check_pmm_circuit1_l3_A {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l3_A {
@@ -806,7 +806,7 @@ sub check_pmm_circuit2_l3_A {
 
         ($EXIT_CODE,$EXIT_WORD) = pmm_threshold_check($PORT_VALUE,$PORT_HIGHCRIT,$PORT_HIGHWARN,$PORT_LOWCRIT,$PORT_LOWWARN);
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";".$PORT_HIGHWARN.";".$PORT_HIGHCRIT.";;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l1_W {
@@ -825,7 +825,7 @@ sub check_pmm_circuit1_l1_W {
 	$EXIT_CODE=0;
 	$EXIT_WORD="OK";
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l1_W {
@@ -844,7 +844,7 @@ sub check_pmm_circuit2_l1_W {
         $EXIT_CODE=0;
         $EXIT_WORD="OK";
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l2_W {
@@ -863,7 +863,7 @@ sub check_pmm_circuit1_l2_W {
         $EXIT_CODE=0;
         $EXIT_WORD="OK";
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l2_W {
@@ -882,7 +882,7 @@ sub check_pmm_circuit2_l2_W {
         $EXIT_CODE=0;
         $EXIT_WORD="OK";
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit1_l3_W {
@@ -901,7 +901,7 @@ sub check_pmm_circuit1_l3_W {
         $EXIT_CODE=0;
         $EXIT_WORD="OK";
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 sub check_pmm_circuit2_l3_W {
@@ -920,7 +920,7 @@ sub check_pmm_circuit2_l3_W {
         $EXIT_CODE=0;
         $EXIT_WORD="OK";
         $EXIT_STRING=$EXIT_WORD." - ".$PORT_NAME." ".$DESC." ".$PORT_VALUE.$UNIT;
-        $EXIT_PERFDATA=$PORT_NAME." ".$DESC."=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
+        $EXIT_PERFDATA="'".$PORT_NAME." ".$DESC."'=".$PORT_VALUE.$PERFDATA_UNIT.";;;;";
         return ($EXIT_STRING,$EXIT_PERFDATA,$EXIT_CODE);
 }
 
