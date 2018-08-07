@@ -1,4 +1,4 @@
-check_snmp_cmc3_reload
+check_snmp_cmc3_reloaded
 
 Nagios Plugin to check the Ports of an Rittal CMC3 Unit <br>
 You just need to define a Port. The Plugin does a auto detection on this port. <br>

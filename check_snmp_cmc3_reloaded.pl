@@ -10,13 +10,8 @@
 # 	- Made some code optimization
 # - 14.12.2013 Version 1.2
 # 	- Small bugfix with the low threshold check
-#
-# Todo:
-# - write pnp template
-# - manual warning and critical values
-#
-# Bugs:
-
+# - 07.08.2018 Version 2 / marcel@blava.net
+#       - Fix OIDs for -PU port
 
 use strict;
 use warnings;
